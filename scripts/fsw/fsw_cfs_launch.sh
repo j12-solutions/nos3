@@ -87,8 +87,8 @@ do
     $DNETWORK create $SC_NETNAME 2> /dev/null
     echo ""
 
-    echo $SC_NUM " - Connect GSW " "${GSW:-cosmos-openc3-operator-1}" " to spacecraft network..."
-    $DNETWORK connect  $SC_NETNAME "${GSW:-cosmos-openc3-operator-1}" --alias cosmos --alias active-gs
+    echo $SC_NUM " - Connect GSW " "${GSW:-openc3-openc3-operator-1}" " to spacecraft network..."
+    $DNETWORK connect  $SC_NETNAME "${GSW:-openc3-openc3-operator-1}" --alias cosmos --alias active-gs
     echo ""
 
     echo $SC_NUM " - 42..."

@@ -17,7 +17,7 @@ fi
 
 echo "Clone openc3-nos3 into local user directory..."
 cd $USER_NOS3_DIR
-git clone https://github.com/nasa-itc/openc3-nos3.git $USER_NOS3_DIR/openc3
+git clone https://github.com/nasa-itc/openc3-nos3.git -b nos3#723-openc3 $USER_NOS3_DIR/openc3
 echo ""
 
 echo "Prepare openc3 containers..."
@@ -46,8 +46,8 @@ fi
 
 # Start generating the plugin
 mkdir build
-cd build
-$OPENC3_CLI generate plugin nos3
+# cd build
+$OPENC3_CLI generate plugin nos3 --ruby
 if [ ! -d "openc3-cosmos-nos3" ]
 then
     echo ""
@@ -118,7 +118,7 @@ done
 echo "   MAP_TARGET TO_DEBUG" >> plugin.txt
 echo "" >> plugin.txt
 
-echo "INTERFACE RADIO udp_interface.rb radio-sim 6010 6011 nil nil 128 10.0 nil" >> plugin.txt
+echo "INTERFACE RADIO udp_interface.rb cryptolib 6010 6011 nil nil 128 10.0 nil" >> plugin.txt
 for i in $targets
 do
     if [ "$i" != "SIM_42_TRUTH" -a "$i" != "SYSTEM" -a "$i" != "TO_DEBUG" ]
@@ -151,13 +151,13 @@ echo ""
 
 ## Install plugin
 echo "Install plugin..."
-cd $OPENC3_DIR/build/openc3-cosmos-nos3
-$OPENC3_CLIROOT geminstall ./openc3-cosmos-nos3-1.0.$DATE.gem
+cd $OPENC3_DIR/openc3-cosmos-nos3
+$OPENC3_CLI geminstall ./openc3-cosmos-nos3-1.0.$DATE.gem
 echo ""
 
 # Load plugin
 echo "Load plugin..."
-$OPENC3_CLIROOT load openc3-cosmos-nos3-1.0.$DATE.gem
+$OPENC3_CLI load openc3-cosmos-nos3-1.0.$DATE.gem
 echo ""
 
 ## Set permissions on build files
