@@ -119,15 +119,6 @@ FALSE                                   ! Echo to stdout
 2                                       ! Number of TX prefixes
 "SC"                                    ! Prefix 0
 "Orb"                                   ! Prefix 1
-**********************************  FSS IPC  *****************************
-TX                                      ! IPC Mode (OFF,TX,RX,TXRX,ACS,WRITEFILE,READFILE)
-"FSS.42"                                ! File name for WRITE or READ
-SERVER                                  ! Socket Role (SERVER,CLIENT,GMSEC_CLIENT)
-fortytwo       4284                     ! Server Host Name, Port 
-FALSE                                   ! Allow Blocking (i.e. wait on RX)
-FALSE                                   ! Echo to stdout
-1                                       ! Number of TX prefixes
-"SC[0].FSS[0]"                          ! Prefix 0
 **********************************  IMU IPC  *****************************
 TX                                      ! IPC Mode (OFF,TX,RX,TXRX,ACS,WRITEFILE,READFILE)
 "IMU.42"                                ! File name for WRITE or READ
@@ -159,3 +150,12 @@ FALSE                                   ! Echo to stdout
 "SC[0].PosR"                            ! Prefix 1
 "SC[0].qn"                              ! Prefix 2
 "Orb[0].PosN"                           ! Prefix 3
+**********************************  Blackboard IPC  *****************************
+TX                                      ! IPC Mode (OFF,TX,RX,TXRX,ACS,WRITEFILE,READFILE)
+"EPS.42"                                ! File name for WRITE or READ
+SERVER                                  ! Socket Role (SERVER,CLIENT,GMSEC_CLIENT)
+fortytwo       4285                     ! Server Host Name, Port 
+FALSE                                   ! Allow Blocking (i.e. wait on RX)
+TRUE                                    ! Echo to stdout
+1                                       ! Number of TX prefixes
+"SC[0]"                                 ! Prefix 0
