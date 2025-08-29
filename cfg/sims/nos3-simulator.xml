@@ -633,13 +633,16 @@
                         <chip-select>2</chip-select>
                     </connection>
                 </connections>
-                <data-provider>
+                <!--<data-provider>
                     <type>GENERIC_MAG_42_PROVIDER</type>
                     <hostname>fortytwo</hostname>
                     <port>4234</port>
                     <max-connection-attempts>30</max-connection-attempts>
                     <retry-wait-seconds>1</retry-wait-seconds>
                     <spacecraft>0</spacecraft>
+                </data-provider>-->
+                <data-provider>
+                    <type>GENERIC_MAG_SHMEM_PROVIDER</type>
                 </data-provider>
             </hardware-model>
         </simulator>
