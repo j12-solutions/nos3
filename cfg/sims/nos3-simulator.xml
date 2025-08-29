@@ -233,12 +233,17 @@
                 <!-- <data-provider>
                     <type>GENERIC_EPS_PROVIDER</type>
                 </data-provider> -->
-                <data-provider>
+                <!--<data-provider>
                     <type>GENERIC_EPS_42_PROVIDER</type>
                     <hostname>fortytwo</hostname>
                     <port>4283</port>
                     <max-connection-attempts>30</max-connection-attempts>
                     <retry-wait-seconds>1</retry-wait-seconds>
+                    <spacecraft>0</spacecraft>
+                </data-provider>-->
+                <data-provider>
+                    <type>GENERIC_EPS_SHMEM_PROVIDER</type>
+                    <orbit>0</orbit>
                     <spacecraft>0</spacecraft>
                 </data-provider>
                 <physical>
