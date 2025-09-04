@@ -663,12 +663,17 @@
                         <node-port>10</node-port>
                     </connection>
                 </connections>
-                <data-provider>
+                <!--<data-provider>
                     <type>GENERIC_STAR_TRACKER_42_PROVIDER</type>
                     <hostname>fortytwo</hostname>
                     <port>4282</port>
                     <max-connection-attempts>30</max-connection-attempts>
                     <retry-wait-seconds>1</retry-wait-seconds>
+                    <spacecraft>0</spacecraft>
+                    <star-tracker>0</star-tracker>
+                </data-provider>-->
+                <data-provider>
+                    <type>GENERIC_STAR_TRACKER_SHMEM_PROVIDER</type>
                     <spacecraft>0</spacecraft>
                     <star-tracker>0</star-tracker>
                 </data-provider>
