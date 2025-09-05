@@ -173,7 +173,7 @@
                         <node-port>1</node-port>
                     </connection>
                 </connections>
-                <data-provider>               
+                <!--<data-provider>               
                     <type>GPS42SOCKET</type>
                     <hostname>fortytwo</hostname>
                     <port>4245</port>
@@ -182,7 +182,13 @@
                     <spacecraft>0</spacecraft>
                     <GPS>0</GPS>
                     <leap-seconds>37</leap-seconds>
-                </data-provider>               
+                </data-provider>-->
+                <data-provider>
+                    <type>GPS_SHMEM</type>
+                    <spacecraft>0</spacecraft>
+                    <GPS>0</GPS>
+                    <leap-seconds>37</leap-seconds>
+                </data-provider>
                 <!-- <data-provider>               
                     <type>GPSFILE</type>
                     <filename>gps_data.42</filename>
