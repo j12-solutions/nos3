@@ -1,5 +1,5 @@
 <<<<<<<<<<<<<<< 42: InterProcess Comm Configuration File >>>>>>>>>>>>>>>>
-11                                      ! Number of Sockets
+8                                      ! Number of Sockets
 **********************************  RW 0 to 42   *****************************
 RX                                      ! IPC Mode (OFF,TX,RX,TXRX,ACS,WRITEFILE,READFILE)
 "State01.42"                            ! File name for WRITE or READ
@@ -9,15 +9,6 @@ FALSE                                   ! Allow Blocking (i.e. wait on RX)
 FALSE                                   ! Echo to stdout
 1                                       ! Number of TX prefixes
 "SC"                                    ! Prefix 0
-**********************************  RW 0 from 42   *****************************
-TX                                      ! IPC Mode (OFF,TX,RX,TXRX,ACS,WRITEFILE,READFILE)
-"State02.42"                            ! File name for WRITE or READ
-SERVER                                  ! Socket Role (SERVER,CLIENT,GMSEC_CLIENT)
-fortytwo       4277                     ! Server Host Name, Port 
-FALSE                                   ! Allow Blocking (i.e. wait on RX)
-FALSE                                   ! Echo to stdout
-1                                       ! Number of TX prefixes
-"SC[0].Whl[0].H"                        ! Prefix 0
 **********************************  RW 1 to 42   *****************************
 RX                                      ! IPC Mode (OFF,TX,RX,TXRX,ACS,WRITEFILE,READFILE)
 "State01.42"                            ! File name for WRITE or READ
@@ -27,15 +18,6 @@ FALSE                                   ! Allow Blocking (i.e. wait on RX)
 FALSE                                   ! Echo to stdout
 1                                       ! Number of TX prefixes
 "SC"                                    ! Prefix 0
-**********************************  RW 1 from 42   *****************************
-TX                                      ! IPC Mode (OFF,TX,RX,TXRX,ACS,WRITEFILE,READFILE)
-"State02.42"                            ! File name for WRITE or READ
-SERVER                                  ! Socket Role (SERVER,CLIENT,GMSEC_CLIENT)
-fortytwo       4377                     ! Server Host Name, Port 
-FALSE                                   ! Allow Blocking (i.e. wait on RX)
-FALSE                                   ! Echo to stdout
-1                                       ! Number of TX prefixes
-"SC[0].Whl[1].H"                        ! Prefix 0
 **********************************  RW 2 to 42   *****************************
 RX                                      ! IPC Mode (OFF,TX,RX,TXRX,ACS,WRITEFILE,READFILE)
 "State01.42"                            ! File name for WRITE or READ
@@ -45,15 +27,6 @@ FALSE                                   ! Allow Blocking (i.e. wait on RX)
 FALSE                                   ! Echo to stdout
 1                                       ! Number of TX prefixes
 "SC"                                    ! Prefix 0
-**********************************  RW 2 from 42   *****************************
-TX                                      ! IPC Mode (OFF,TX,RX,TXRX,ACS,WRITEFILE,READFILE)
-"State02.42"                            ! File name for WRITE or READ
-SERVER                                  ! Socket Role (SERVER,CLIENT,GMSEC_CLIENT)
-fortytwo       4477                     ! Server Host Name, Port 
-FALSE                                   ! Allow Blocking (i.e. wait on RX)
-FALSE                                   ! Echo to stdout
-1                                       ! Number of TX prefixes
-"SC[0].Whl[2].H"                        ! Prefix 0
 **********************************  Torquer IPC  *****************************
 RX                                      ! IPC Mode (OFF,TX,RX,TXRX,ACS,WRITEFILE,READFILE)
 "Torquer.Rx"                            ! File name for WRITE or READ
