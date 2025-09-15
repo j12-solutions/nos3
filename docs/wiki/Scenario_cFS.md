@@ -11,7 +11,7 @@ NOS3 serves as a specialized distribution of cFS, incorporating customized compo
 This approach allows teams to benefit from community updates while contributing improvements back to the open-source ecosystem.
 This demonstration will walk through key cFS capabilities using NOS3's minimal mode, providing hands-on experience with its core applications and services.
 
-This scenario was last updated on 5/23/25 and leveraged the `dev` branch at the time [a3e7c100].
+This scenario was last updated on 9/15/2025 and leveraged the `dev` branch at the time [422f66ec].
 
 ## Learning Goals
 
