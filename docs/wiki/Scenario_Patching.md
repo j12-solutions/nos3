@@ -80,8 +80,11 @@ The other two parameters are CLASS and DEST_ID:
  * Class 2 is typically preferred, and this is also true for patching the spacecraft, where a partial file could cause significant problems.  Accordingly, we will leave the CLASS parameter as 2.
  * DEST_ID determines where the data is being sent. More specifically, it will only change when multiple spacecraft are present to receive data.  Accordingly, we will also leave it as-is.  
 
-
 Next reboot CFE so that FSW will automatically reload all the tables.
+![SC Reboot](./_static/scenario_patching/sc_reboot_cmd.png)
+
+Now execute RTS 6:
+![Execute RTS 6](./_static/scenario_patching/execute_rts006.png)
 
 As before, you should see three SAMPLE NOOP commands, one every five seconds, come through on the NOS3 FSW terminal.
 If looking exclusively at COSMOS, the Command Counter of the SAMPLE app should increment at the same rate, three times.
