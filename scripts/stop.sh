@@ -24,6 +24,7 @@ $DCALL ps --filter=name="influxdb*" -aq | xargs $DCALL stop > /dev/null 2>&1 &
 $DCALL ps --filter=name="ttc-command*" -aq | xargs $DCALL stop > /dev/null 2>&1 &
 $DCALL ps --filter=name="openc3*" -aq | xargs $DCALL stop > /dev/null 2>&1 &
 $DCALL ps --filter ancestor="ballaerospace/cosmos:4.5.0" -aq | xargs $DCALL stop > /dev/null 2>&1 &
+$DCALL ps --filter=name="cosmos-openc3-operator-1" -aq | xargs $DCALL stop > /dev/null 2>&1 &
 
 # Intentionally wait to complete
 wait 
@@ -31,6 +32,8 @@ wait
 # Docker cleanup
 $DCALL container prune -f > /dev/null 2>&1
 $DNETWORK ls --filter=name="nos" | xargs $DNETWORK rm > /dev/null 2>&1
+$DNETWORK ls --filter=name="cosmos-openc3-operator-1" | xargs $DNETWORK rm > /dev/null 2>&1
+rm /dev/shm/Blackboard 2> /dev/null
 
 # 42
 rm -rf $USER_NOS3_DIR/42/NOS3InOut
