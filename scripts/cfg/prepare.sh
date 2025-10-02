@@ -41,6 +41,12 @@ mkdir $USER_FPRIME_PATH 2> /dev/null
 echo ""
 echo ""
 
+echo "Prepare OpenC3 docker containers..."
+cd $USER_NOS3_DIR
+git clone https://github.com/nasa-itc/openc3-nos3.git -b nos3#723-openc3 $USER_NOS3_DIR/openc3
+$DOCKER_COMPOSE_COMMAND -f $OPENC3_DIR/compose.yaml pull 
+echo ""
+
 echo "Prepare Igniter (optional)..."
 pip3 install pyside6 xmltodict
 cd $BASE_DIR

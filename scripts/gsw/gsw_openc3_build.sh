@@ -6,6 +6,7 @@
 CFG_BUILD_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 SCRIPT_DIR=$CFG_BUILD_DIR/../../scripts
 source $SCRIPT_DIR/env.sh
+export GSW="openc3-openc3-operator-1"
 
 # Check that local NOS3 directory exists
 if [ ! -d $USER_NOS3_DIR ]; then
@@ -15,10 +16,13 @@ if [ ! -d $USER_NOS3_DIR ]; then
     exit 1
 fi
 
-echo "Clone openc3-nos3 into local user directory..."
-cd $USER_NOS3_DIR
-git clone https://github.com/nasa-itc/openc3-nos3.git -b nos3#723-openc3 $USER_NOS3_DIR/openc3
-echo ""
+# Check that openc3 directory exists
+if [ ! -d $OPENC3_DIR ]; then
+    echo ""
+    echo "    Need to run make prep first!"
+    echo ""
+    exit 1
+fi
 
 echo "Prepare openc3 containers..."
 cd $OPENC3_DIR
@@ -129,7 +133,7 @@ do
 done
 echo "" >> plugin.txt
 
-echo "INTERFACE SIM_42_TRUTH_INT udp_interface.rb host.docker.internal 5110 5111 nil nil 128 10.0 nil" >> plugin.txt
+echo "INTERFACE SIM_42_TRUTH_INT udp_interface.rb truth42sim 5110 5111 nil nil 128 10.0 nil" >> plugin.txt
 echo "   MAP_TARGET SIM_42_TRUTH" >> plugin.txt
 
 # Capture date created
@@ -155,13 +159,6 @@ cd $OPENC3_DIR/openc3-cosmos-nos3
 $OPENC3_CLI geminstall ./openc3-cosmos-nos3-1.0.$DATE.gem
 echo ""
 
-# Load plugin
-echo "Load plugin..."
-$OPENC3_CLI load openc3-cosmos-nos3-1.0.$DATE.gem
-echo ""
-
-## Set permissions on build files
-#chmod -R 777 $BASE_DIR/gsw/cosmos/build
 
 echo "OpenC3 build script complete."
 echo "Note that while this script is complete, OpenC3 is likely still be processing behind the scenes!"
