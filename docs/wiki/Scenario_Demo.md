@@ -90,7 +90,7 @@ Let's send another NOOP, but use the CFS_RADIO target:
 * Things look as expected now in the COSMOS Command and Telemetry Server.
 
 Let's confirm that we're actually getting radio telemetry which matches the debug interface:
-* Open another Packet Viewer window via the COSMOS NOS3 Launcher (third row, first column) to packet `CFS_RADIO` and compare it's values with the values for the `CFS` (debug) packet.
+* Open another Packet Viewer window via the COSMOS NOS3 Launcher (third row, first column) to packet `CFS_RADIO` and compare its values with the values for the `CFS` (debug) packet.
 
 ![Scenario Demo - Radio Telemetry](./_static/scenario_demo/scenario_demo_radio_telemetry.png)
 

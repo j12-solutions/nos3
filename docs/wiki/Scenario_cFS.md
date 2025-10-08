@@ -103,10 +103,10 @@ In the above we see a standard splash screen honoring the Simulation To Flight -
 
 Additional version info is printed for each module loaded, and then:
 * The various shared objects from the cFS startup script (`cfe_es_startup.scr`) are loaded:
-  * Each is loaded down the list
-  * The initialization function specified in the startup script for each library is executed
-  * The main function specified in the startup script for each application is executed
-  * Each module typically print a success message upon completion of initialization
+  * Each is loaded down the list.
+  * The initialization function specified in the startup script for each library is executed.
+  * The main function specified in the startup script for each application is executed.
+  * Each module typically print a success message upon completion of initialization.
 
 ![Scenario cFS - Boot 2](./_static/scenario_cfs/scenario_cfs_boot2.png)
 
