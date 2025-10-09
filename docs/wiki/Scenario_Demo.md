@@ -4,7 +4,7 @@ This scenario was developed to provide an overview of the NASA Operational Simul
 It demonstrates the flight software (FSW), ground software (GSW), and simulation interactions within NOS3.
 It also serves as a template for additional scenarios to be developed and added to the environment to cover various use cases.
 
-This scenario was last updated on 05/26/2025 and leveraged the `dev` branch at the time [422f66ec].
+This scenario was last updated on 08/29/2025 and leveraged the `dev` branch at the time [422f66ec].
 
 ## Learning Goals
 
@@ -138,7 +138,7 @@ Let's send the SAMPLE_SIM_SET_STATUS command with a status value of 5.
 ### ADCS
 
 We can leave sample like that - let's play with the Attitude Determination and Control System (ADCS).
-* In short, ADCS uses various components (typically referred to as sensors and actuators) to make the vehicle change orientation or position.
+* In short, ADCS uses various components (typically referred to as sensors and actuators) to make the vehicle change orientation or orbit.
 Let's first disable the ADCS from doing anything so we can play:
 * Note that if you are in eclipse your spacecraft can't point at the sun because it doesn't know where it is (not smart enough to guess). 
 * In the Command Sender send the command `GENERIC_ADCS` `GENERIC_ADCS_SET_MODE_CC` with `GNC_MODE` `PASSIVE` (0).

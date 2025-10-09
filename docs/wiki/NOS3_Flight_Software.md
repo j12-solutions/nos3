@@ -3,7 +3,7 @@
 Flight Software (FSW) is responsible for operating and navigating your spacecraft throughout its mission. NOS3 creates an environment that allows a user to simulate an end-to-end mission with a spacecraft using cFS. NOS3 Flight software is defaulted to use cFS, however F' FSW is integrated into NOS3 as well to provide another FSW framework for users to explore.
 
 ## Standalone Checkout
-In NOS3, Standalone Checkouts are used to verify component functionality with your Component's Simulation. Following the steps below will create a simple terminal interface to interact with the Simulation. Checkouts are to be used to test your component without connecting your component to NOS3 in its entirety, therefore providing a proof of concept of operations.
+In NOS3, Standalone Checkouts are used to verify component functionality with your component's simulation. Following the steps below will create a simple terminal interface to interact with the simulation. Checkouts are to be used to test your component without connecting your component to NOS3 in its entirety, therefore providing a proof of concept of operations.
 
 The below example is a reference for the sample component.
 
@@ -188,8 +188,8 @@ FSW with any new additions.
 After the F-Prime GDS window launches, F-Prime flight software should be running and
 the Sample component can be commanded. To send a SampleSim NOOP command,
 select the `SampleSim.NOOP` command from the drop down menu in the F-Prime
-ground data system and click `Send Command`. You will then seen the NOOP command 
-completed event message under the events tab in the F-Prime 
+ground data system and click `Send Command`. You will then seen the `NOOP command completed` 
+event message under the events tab in the F-Prime 
 ground data system window. The below figures
 represent an example of what commanding looks like in the F-Prime GDS.
 
