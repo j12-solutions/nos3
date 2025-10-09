@@ -188,7 +188,7 @@ FSW with any new additions.
 After the F-Prime GDS window launches, F-Prime flight software should be running and
 the Sample component can be commanded. To send a SampleSim NOOP command,
 select the `SampleSim.NOOP` command from the drop down menu in the F-Prime
-ground data system and click `Send Command`. You will then seen the `NOOP command completed` 
+ground data system and click `Send Command`. You will then see the `NOOP command completed` 
 event message under the events tab in the F-Prime 
 ground data system window. The below figures
 represent an example of what commanding looks like in the F-Prime GDS.
