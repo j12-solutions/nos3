@@ -134,7 +134,7 @@ do
     echo ""
 
     echo $SC_NUM " - Flight Software..."
-    cd $FSW_DIR
+    # cd $FSW_DIR
     gnome-terminal --window-with-profile=KeepOpen --title="FPrime" -- $DFLAGS -v $BASE_DIR:$BASE_DIR --name $SC_NUM"-fprime" --network=$SC_NETNAME -h nos-fsw -w $BASE_DIR --sysctl fs.mqueue.msg_max=10000 --ulimit rtprio=105 --cap-add=sys_nice $DBOX $SCRIPT_DIR/fsw/start_fprime.sh
     echo ""
 done
