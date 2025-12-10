@@ -43,8 +43,8 @@ mkdir /tmp/nos3/data/evs 2> /dev/null
 mkdir /tmp/nos3/data/hk 2> /dev/null
 mkdir /tmp/nos3/data/inst 2> /dev/null
 mkdir /tmp/nos3/uplink 2> /dev/null
-cp $BASE_DIR/fsw/build/exe/cpu1/cf/cfe_es_startup.scr /tmp/nos3/uplink/tmp0.so 2> /dev/null
-cp $BASE_DIR/fsw/build/exe/cpu1/cf/sample.so /tmp/nos3/uplink/tmp1.so 2> /dev/null
+# cp $BASE_DIR/fsw/build/exe/cpu1/cf/cfe_es_startup.scr /tmp/nos3/uplink/tmp0.so 2> /dev/null
+# cp $BASE_DIR/fsw/build/exe/cpu1/cf/sample.so /tmp/nos3/uplink/tmp1.so 2> /dev/null
 
 echo "Create ground networks..."
 $DNETWORK create \
@@ -100,10 +100,7 @@ do
 
     # Debugging
     # Replace `--tab` with `--window-with-profile=KeepOpen` once you've created this gnome-terminal profile manually
-    echo $SC_NUM " - Flight Software..."
-    cd $FSW_DIR
-    gnome-terminal --window-with-profile=KeepOpen --title="FPrime" -- $DFLAGS -v $BASE_DIR:$BASE_DIR --name $SC_NUM"-fprime" --network=$SC_NETNAME -h nos-fsw -w $BASE_DIR $DBOX $SCRIPT_DIR/fsw/start_fprime.sh
-    echo ""
+    
 
     echo $SC_NUM " - Simulators..."
     cd $SIM_BIN
@@ -134,6 +131,11 @@ do
 
     echo $SC_NUM " - CryptoLib..."
     gnome-terminal --tab --title=$SC_NUM" - CryptoLib GSW" -- $DFLAGS -v $BASE_DIR:$BASE_DIR --name $SC_NUM"_cryptolib_gsw"  --network=$SC_NETNAME --network-alias=cryptolib -w $BASE_DIR/gsw/build $DBOX ./support/standalone
+    echo ""
+
+    echo $SC_NUM " - Flight Software..."
+    # cd $FSW_DIR
+    gnome-terminal --window-with-profile=KeepOpen --title="FPrime" -- $DFLAGS -v $BASE_DIR:$BASE_DIR --name $SC_NUM"-fprime" --network=$SC_NETNAME -h nos-fsw -w $BASE_DIR --sysctl fs.mqueue.msg_max=10000 --ulimit rtprio=105 --cap-add=sys_nice $DBOX $SCRIPT_DIR/fsw/start_fprime.sh
     echo ""
 done
 
