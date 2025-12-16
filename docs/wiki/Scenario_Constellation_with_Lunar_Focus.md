@@ -18,7 +18,7 @@ Before running the scenario, complete the following steps:
 
 ## Walkthrough
 For this scenario, you will need to switch to the `802-constellation-scenario-with-lunar-focus` branch. Once you do that, you can do a typical `make` and `make launch`.
-You will notice that three flight software windows get opened with titles `sc0N - NOS3 Flight Software`. Once you start COSMOS, in the command and telemetry server you will see three debug interfaces, `DEBUG_1`, `DEBUG_2`, and `DEBUG_3`.  This is shown in the figure below.
+You will notice that three flight software windows get opened with titles `sc0N - NOS3 Flight Software`, where `N` is 1, 2, and 3. Once you start COSMOS, in the command and telemetry server you will see three debug interfaces, `DEBUG_1`, `DEBUG_2`, and `DEBUG_3`.  This is shown in the figure below.
 
  ![MultipleSpacecraft](_static/scenario_multiple_spacecraft/MultipleSpacecraft.png)
 
