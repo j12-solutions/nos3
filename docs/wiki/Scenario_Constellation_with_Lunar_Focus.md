@@ -44,7 +44,40 @@ This is shown below:
 
 ![SendingCommand3](_static/scenario_multiple_spacecraft/SendingCommand3.png)
 
-This concludes the Multiple Spacecraft Constellation scenario.
-
 Note that this is presently only in the branch mentioned above; however, the NOS3 team expects to incorporate support for multiple spacecraft into a future release.
 
+## Background
+
+The following is a description of the files in a base NOS3 scenario that need modified in order to have a constellation with lunar focus scenario.
+
+These files fall into four categories:  top level configuration, 42 configuration, simulation configuration, and flight software configuration.
+
+### Top Level Configuration
+The top level configuration file that needs modified is `cfg/nos3-mission.xml`.
+Changes that need to be made include the following.
+First, change the `<scenario>` from "STF1" to "Gateway".
+This will cause the scenario to use `cfg/InOut/Inp_Sim_Gateway.txt` as the `cfg/InOut/Inp_Sim.txt` file and `cfg/InOut/Inp_Graphics_Gateway.txt` as the `cfg/InOut/Inp_Graphics.txt` file for 42.
+Next change `<number-spacecraft>` from "1" to "3".
+Finally, change `<sc-1-cfg>` from "spacecraft/sc-mission-config.xml" to "spacecraft/sc-minimal-config.xml" and add `<sc-2-cfg>` and `<sc-3-cfg>` with values "spacecraft/sc-minimal-config.xml".
+
+### 42 Configuration
+The first file that needs changed is to make `cfg/InOut/Inp_Sim_Gateway.txt` based on `cfg/InOut/Inp_Sim.txt`.
+Line 11 should be changed to "Orb_NRHO.txt" so that the Lunar near rectilinear halo orbit (NRHO) is used as the orbit for the spacecraft.
+Note that the file `cfg/InOut/Orb_NRHO.txt` is already provided with NOS3 and has been modified to specify a Lunar NRHO orbit.
+Line 13 should be changed from "1" to "3" and lines 14, 15, and 16 should have "SC_Gateway.txt", "SC_Gateway2.txt", and "SC_Gateway3.txt".
+Note that the files `cfg/InOut/SC_Gateway.txt`, `cfg/InOut/SC_Gateway2.txt`, and `cfg/InOut/SC_Gateway3.txt` are already provided with NOS3 and have been modified to specify orbit offsets and different spacecraft models.
+If needed the parameters for the spacecraft bodies and for various sensors and actuators on the spacecraft can also be changed.
+
+The next file that needs changed is to make `cfg/InOut/Inp_Graphics_Gateway.txt` based on `cfg/InOut/Inp_Graphics.txt`.
+The main thing to change here is line 16 to specify a reasonable POV range for the modified spacecraft model.
+
+Finally, the file `cfg/InOut/Inp_IPC.txt` needs changed.
+It needs changed to add IPC connections for the simulators for spacecraft 2 and 3.
+This involves duplicating the first 15 blocks of IPC parameters for spacecraft 2 and 3 and then changing the appropriate spacecraft prefixes from "SC[0]" to "SC[1]" or "SC[2]" as appropriate.
+In addition, the server ports need changed so that they are unique and correspond to the port numbers specified in the simulation configuration files `sc-1-nos3-simulator.xml`, `sc-2-nos3-simulator.xml`, and `sc-3-nos3-simulator.xml`.
+
+### Simulation Configuration
+The simulation configuration files that need modifed are to make `cfg/sims/sc-1-nos3-simulator.xml`, `cfg/sims/sc-2-nos3-simulator.xml`, and `cfg/sims/sc-3-nos3-simulator.xml` all based on `cfg/sims/nos3-simulator.xml`.
+`
+
+### Flight Software Configuration
