@@ -50,7 +50,7 @@ Note that this is presently only in the branch mentioned above; however, the NOS
 
 The following is a description of the files in a base NOS3 scenario that need modified in order to have a constellation with lunar focus scenario.
 
-These files fall into four categories:  top level configuration, 42 configuration, simulation configuration, and flight software configuration.
+These files fall into three categories:  top level configuration, 42 configuration, and simulation configuration.
 
 ### Top Level Configuration
 The top level configuration file that needs modified is `cfg/nos3-mission.xml`.
@@ -66,7 +66,7 @@ Line 11 should be changed to "Orb_NRHO.txt" so that the Lunar near rectilinear h
 Note that the file `cfg/InOut/Orb_NRHO.txt` is already provided with NOS3 and has been modified to specify a Lunar NRHO orbit.
 Line 13 should be changed from "1" to "3" and lines 14, 15, and 16 should have "SC_Gateway.txt", "SC_Gateway2.txt", and "SC_Gateway3.txt".
 Note that the files `cfg/InOut/SC_Gateway.txt`, `cfg/InOut/SC_Gateway2.txt`, and `cfg/InOut/SC_Gateway3.txt` are already provided with NOS3 and have been modified to specify orbit offsets and different spacecraft models.
-If needed the parameters for the spacecraft bodies and for various sensors and actuators on the spacecraft can also be changed.
+If needed the parameters for the spacecraft bodies and for various sensors and actuators on the spacecraft can also be changed in these files.
 
 The next file that needs changed is to make `cfg/InOut/Inp_Graphics_Gateway.txt` based on `cfg/InOut/Inp_Graphics.txt`.
 The main thing to change here is line 16 to specify a reasonable POV range for the modified spacecraft model.
@@ -78,6 +78,6 @@ In addition, the server ports need changed so that they are unique and correspon
 
 ### Simulation Configuration
 The simulation configuration files that need modifed are to make `cfg/sims/sc-1-nos3-simulator.xml`, `cfg/sims/sc-2-nos3-simulator.xml`, and `cfg/sims/sc-3-nos3-simulator.xml` all based on `cfg/sims/nos3-simulator.xml`.
-`
-
-### Flight Software Configuration
+`cfg/sims/sc-1-nos3-simulator.xml` should be a copy of `cfg/sims/nos3-simulator.xml`.
+`cfg/sims/sc-2-nos3-simulator.xml` should be a copy of `cfg/sims/nos3-simulator.xml` except that the simulator data provider ports should be changed so that they are unique and correspond to the port numbers specified in the 42 configuration file `Inp_IPC.txt`.
+`cfg/sims/sc-3-nos3-simulator.xml` should also be a copy of `cfg/sims/nos3-simulator.xml` except that the simulator data provider ports should be changed so that they are unique and correspond to the port numbers specified in the 42 configuration file `Inp_IPC.txt`.
