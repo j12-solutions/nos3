@@ -1,6 +1,7 @@
 # Scenario - Constellation with Lunar Focus
 
-This scenario was developed to demonstrate running NOS3 in a configuration which has multiple spacecraft in a constellation.  For this scenario, these spacecraft are in an orbit about the Earth-Moon L2 point.
+This scenario was developed to demonstrate running NOS3 in a configuration which has multiple spacecraft in a constellation.
+For this scenario, these spacecraft are in an orbit about the Earth-Moon L2 point.
 
 This scenario was last updated on 12/10/2025 and leveraged the `802-constellation-scenario-with-lunar-focus` branch at the time [c415ff7].
 
@@ -17,8 +18,11 @@ Before running the scenario, complete the following steps:
   * [Running](./NOS3_Getting_Started.md#running)
 
 ## Walkthrough
-For this scenario, you will need to switch to the `802-constellation-scenario-with-lunar-focus` branch. Once you do that, you can do a typical `make` and `make launch`.
-You will notice that three flight software windows are opened with titles `sc0N - NOS3 Flight Software`, where `N` is either 1, 2, or 3. Once you start COSMOS, you will similarly see three telemetry debug interfaces in the command and telemetry server (`DEBUG_1`, `DEBUG_2`, and `DEBUG_3`).  This is shown in the figure below.
+For this scenario, you will need to switch to the `802-constellation-scenario-with-lunar-focus` branch.
+Once you do that, you can do a typical `make` and `make launch`.
+You will notice that three flight software windows are opened with titles `sc0N - NOS3 Flight Software`, where `N` is either 1, 2, or 3.
+Once you start COSMOS, you will similarly see three telemetry debug interfaces in the command and telemetry server (`DEBUG_1`, `DEBUG_2`, and `DEBUG_3`).
+This is shown in the figure below.
 
  ![MultipleSpacecraft](_static/scenario_multiple_spacecraft/MultipleSpacecraft.png)
 
@@ -34,12 +38,15 @@ This is shown below:
 
 ![SendingCommand](_static/scenario_multiple_spacecraft/SendingCommand.png)
 
-Now verify the same command and telemetry for spacecraft 2.  Send the command `SAMPLE_NOOP_CC` to target `SAMPLE_2`, and view the `sc02 - NOS3 Flight Software` window and the Packet Viewer, with target set to `SAMPLE_2` and packet set to `SAMPLE_HK_TLM`.
-Send the command three times; verify that flight software receives it three times and that the `CMD_COUNT` increases to three.  This is shown below:
+Now verify the same command and telemetry for spacecraft 2.
+Send the command `SAMPLE_NOOP_CC` to target `SAMPLE_2`, and view the `sc02 - NOS3 Flight Software` window and the Packet Viewer, with target set to `SAMPLE_2` and packet set to `SAMPLE_HK_TLM`.
+Send the command three times; verify that flight software receives it three times and that the `CMD_COUNT` increases to three.
+This is shown below:
 
 ![SendingCommand2](_static/scenario_multiple_spacecraft/SendingCommand2.png)
 
-Finally, verify the same thing for spacecraft 3 in the same way.  Send the command 5 times and verifying that it is received five times and that the `CMD_COUNT` increases to five.
+Finally, verify the same thing for spacecraft 3 in the same way.
+Send the command 5 times and verify that it is received five times and that the `CMD_COUNT` increases to five.
 This is shown below:
 
 ![SendingCommand3](_static/scenario_multiple_spacecraft/SendingCommand3.png)
@@ -48,11 +55,12 @@ Note that this is presently only in the branch mentioned above; however, the NOS
 
 ## Background
 
-Several files will need to be changed to go from a base NOS3 scenario, with a single spacecraft, to a constellation scenario with a lunar focus.
+A number of files will need to be changed to go from a base NOS3 scenario, with a single spacecraft, to a constellation scenario with a lunar focus.
 
-These files fall into three categories:  top level configuration, 42 configuration, and simulation configuration.
+These files fall into five categories:  top level configuration, 42 configuration, simulation configuration, flight software configuration, and ground software configuration.
 
-Note all files mentioned are modified correctly as shown in the `802-constellation-scenario-with-lunar-focus` branch of NOS3. Below is description of files need modified or added for this scenario.
+Note all files mentioned are modified correctly in the `802-constellation-scenario-with-lunar-focus` branch of NOS3.
+Below is a description of files need modified or added for this scenario.
 
 ### Top Level Configuration
 The top level configuration file that needs to be modified is `cfg/nos3-mission.xml`.
@@ -70,7 +78,8 @@ The first change here which needs to be made is to create `cfg/InOut/Inp_Sim_Gat
       * Note that the files `cfg/InOut/SC_Gateway.txt`, `cfg/InOut/SC_Gateway2.txt`, and `cfg/InOut/SC_Gateway3.txt` are already provided with NOS3 and contain particular orbit offsets and different spacecraft models.
   * These files are also the location where parameters for spacecraft bodies or for various sensors/actuators would be changed.
 
-Next, it is necessary to create `cfg/InOut/Inp_Graphics_Gateway.txt` based on `cfg/InOut/Inp_Graphics.txt`.  Duplicate the latter file and make the following change:
+Next, it is necessary to create `cfg/InOut/Inp_Graphics_Gateway.txt` based on `cfg/InOut/Inp_Graphics.txt`.
+Duplicate the latter file and make the following change:
   * The main thing to change here is line 16 to specify a reasonable POV range for the modified spacecraft model.
 
 Finally, the file `cfg/InOut/Inp_IPC.txt` needs to be changed.
@@ -79,15 +88,18 @@ This involves duplicating the first 15 blocks of IPC parameters for spacecraft 2
 In addition, the server ports must be changed so that they are unique and correspond to the port numbers specified in the simulation configuration files `sc-1-nos3-simulator.xml`, `sc-2-nos3-simulator.xml`, and `sc-3-nos3-simulator.xml`.
 
 ### Simulation Configuration
-A `.xml` file is needed for each spacecraft.  Accordingly, for this scenario, it is necessary to create `cfg/sims/sc-1-nos3-simulator.xml`, `cfg/sims/sc-2-nos3-simulator.xml`, and `cfg/sims/sc-3-nos3-simulator.xml`, all based on `cfg/sims/nos3-simulator.xml`:
+A `.xml` file is needed for each spacecraft.
+Accordingly, for this scenario, it is necessary to create `cfg/sims/sc-1-nos3-simulator.xml`, `cfg/sims/sc-2-nos3-simulator.xml`, and `cfg/sims/sc-3-nos3-simulator.xml`, all based on `cfg/sims/nos3-simulator.xml`:
   * `cfg/sims/sc-1-nos3-simulator.xml` should be an exact copy of `cfg/sims/nos3-simulator.xml`.
   * `cfg/sims/sc-2-nos3-simulator.xml` should be a copy of `cfg/sims/nos3-simulator.xml` except that the simulator data provider ports should be changed so that they are unique and correspond to the port numbers specified in the 42 configuration file `Inp_IPC.txt`.
   * `cfg/sims/sc-3-nos3-simulator.xml` should also be a copy of `cfg/sims/nos3-simulator.xml` except that the simulator data provider ports should be changed so that they are unique and correspond to the port numbers specified in the 42 configuration file `Inp_IPC.txt`.
 
-### FSW Configuration
-We will need to modify the `fsw_cfs_launch.sh` script in order to configure each spacecraft with a running FSW docker container. Note, Each container is configured the same way and is running the same cFS FSW configuration in NOS3. 
+### Flight Software Configuration
+We will need to modify the `fsw_cfs_launch.sh` script in order to configure each spacecraft with a running flight software docker container.
+Note: each container is configured the same way and is running the same cFS flight software configuration in NOS3. 
 
-Simply copy the code below and replace with your existing cfs_launch script. If you wish to go back to a single spacecraft mode, be sure to save the original fsw_cfs_launch.sh script accordingly in your enviroment.
+Simply copy the code below and replace with your existing cfs_launch script.
+If you wish to go back to a single spacecraft mode, be sure to save the original fsw_cfs_launch.sh script accordingly in your environment.
 
 ```
 #!/bin/bash -i
@@ -270,16 +282,22 @@ echo "Docker launch script completed!"
 
 
 ```
-### GSW Configuration
+### Ground Software Configuration
 Next, it is necessary to modify Cosmos in order to include the necessary targets for each spacecraft. 
 
-First, you will need to modify the ` system.txt`  file located ` nos3/gsw/cosmos/config/system/stash`. Add the necessary targets by duplicating the targets already in that file. simply duplicate the **Component** Targets 3 times. Renmaing each target for each spacecraft. For example, 
+First, you will need to modify the ` system.txt`  file located ` nos3/gsw/cosmos/config/system/stash`.
+Add the necessary targets by duplicating the targets already in that file.
+Simply duplicate the **Component** Targets 3 times, renaming each target for each spacecraft.
+For example: 
 
 ![cmd_tlm_server_ref](./_static/scenario_multiple_spacecraft/system_ref.png)
 
-Once all the targets are duplicated for the 3 Spacecraft. We will add them to the cmd_tlm_server for cosmos.
+Once all the targets are duplicated for the 3 Spacecraft, we will add them to the cmd_tlm_server for cosmos.
 
-To modify the `cmd_tlm_server.txt` located in the file path `/nos3/gsw/cosmos/config/tools/cmd_tlm_server/stash`. You will need to duplicate the existing target definitions 3 times for the debug interface 1, 2, and 3 respectively. Note you will need to assign the appropriate host name of the appropriate Spacecraft FSW container to each interface, and bind it to the correct IP as defined in the CFS Launch script we modifed earlier. We do this so Cosmos can comand FSW and process telemetry coming from port 5013 from 3 differenct containers at the same time.
+Next we modify the `cmd_tlm_server.txt` located in the file path `/nos3/gsw/cosmos/config/tools/cmd_tlm_server/stash`.
+You will need to duplicate the existing target definitions 3 times for the debug interface 1, 2, and 3 respectively.
+Note you will need to assign the appropriate host name of the appropriate spacecraft flight software container to each interface, and bind it to the correct IP address as defined in the CFS Launch script we modified earlier.
+We do this so Cosmos can command flight software and process telemetry coming from port 5013 from 3 different containers at the same time.
 
 ![cmd_tlm_server_ref](./_static/scenario_multiple_spacecraft/tlm_server_ref.png)
 
