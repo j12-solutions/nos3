@@ -157,6 +157,14 @@ echo ""
 echo "Install plugin..."
 cd $OPENC3_DIR/openc3-cosmos-nos3
 $OPENC3_CLI geminstall ./openc3-cosmos-nos3-1.0.$DATE.gem
+INSTALL_STATUS=$?
+
+if [ $INSTALL_STATUS -eq 0 ]; then
+    echo "Gem installation successful"
+else
+    echo "Gem installation failed with exit code: $INSTALL_STATUS"
+    exit 1
+fi
 echo ""
 
 
