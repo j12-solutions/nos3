@@ -16,15 +16,21 @@ if [ ! -d $USER_NOS3_DIR ]; then
     exit 1
 fi
 
+echo "Prepare OpenC3 docker containers..."
+cd $USER_NOS3_DIR
+git clone https://github.com/nasa-itc/openc3-nos3.git -b nos3#723-openc3 $USER_NOS3_DIR/openc3
+$DOCKER_COMPOSE_COMMAND -f $OPENC3_DIR/compose.yaml pull 
+echo ""
+
 # Check that openc3 directory exists
 if [ ! -d $OPENC3_DIR ]; then
     echo ""
-    echo "    Need to run make prep first!"
+    echo "    OpenC3 Cloning Failed!"
     echo ""
     exit 1
 fi
 
-echo "Prepare openc3 containers..."
+echo "Launch openc3 containers..."
 cd $OPENC3_DIR
 $OPENC3_PATH run
 echo ""
