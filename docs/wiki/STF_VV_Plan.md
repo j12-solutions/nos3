@@ -133,7 +133,7 @@ The output products of the verification and validation activities include test p
 - I&T:  Integration and Test
 - IV&V:  Independent Verification and Validation
 - JSTAR:  Jon McBride Software Testing and Research
-- NOS3:  NASA Operational Simulator for Small Satellites
+- NOS3:  NASA Operational Simulator for Small Space Systems
 - RTM:  Requirements Traceability Matrix
 - V&V:  Verification and Validation
 - YAMCS:  Yet Another Mission Control System
