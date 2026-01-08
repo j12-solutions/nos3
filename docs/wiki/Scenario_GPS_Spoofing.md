@@ -44,7 +44,7 @@ First connect the GPS Sim to SIM_CMDBUS with the following in `/cfg/sims/nos3-si
 
 ![Connect Sim to CMD Bus](./_static/scenario_gps_spoofing/spoof_simulator_file_code.png)
 
-And then added a `command_callback` function and a global `_spoof` variable to the hardware model that can enable, disable, and spoof the GPS:
+And then add a `command_callback` function and a global `_spoof` variable to the hardware model that can enable, disable, and spoof the GPS:
 
 ![GPS Command Callback](./_static/scenario_gps_spoofing/spoof_hardware_model_cmdcallback.png)
 
