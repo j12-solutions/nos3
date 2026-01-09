@@ -18,9 +18,9 @@ NOS3 can be distilled down into various configurable modules that make up the en
   * F'
 * Ground Software
   * Ammos Instrument Toolkit
-  * Ball Aerospace
+  * Ball Aerospace COSMOS 4.5 (default)
   * OpenC3 COSMOS
-  * YAMCS (default)
+  * YAMCS
 * Simulations
   * Generic versions of standard COTS components
 * Middleware
