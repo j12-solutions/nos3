@@ -96,7 +96,7 @@
 	branch = main
 [submodule "components/generic_eps"]
 	path = components/generic_eps
-	url = https://github.com/nasa-itc/generic_eps.git
+	url = https://github.com/j12-solutions/generic_eps.git
 	branch = main
 [submodule "components/generic_torquer"]
 	path = components/generic_torquer
@@ -116,8 +116,8 @@
 	branch = main
 [submodule "components/cryptolib"]
 	path = components/cryptolib
-	url = https://github.com/nasa/CryptoLib.git
-	branch = main
+	url = https://github.com/j12-solutions/CryptoLib.git
+	branch = dev
 [submodule "components/generic_adcs"]
 	path = components/generic_adcs
 	url = https://github.com/nasa-itc/generic_adcs.git
