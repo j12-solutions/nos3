@@ -9,7 +9,7 @@ source $SCRIPT_DIR/env.sh
 export GSW="cosmos-openc3-operator-1"
 
 echo "COSMOS build..."
-$DCALL image pull localhost:5000/ballaerospace/cosmos
+$DCALL image pull localhost:5000/ballaerospace/cosmos:4.5.0
 mkdir $GSW_DIR/COMPONENTS 2> /dev/null
 rm -r $GSW_DIR/COMPONENTS/* 2> /dev/null
 cp -r $GSW_DIR/config/targets/SIM_CMDBUS_BRIDGE $GSW_DIR/COMPONENTS/

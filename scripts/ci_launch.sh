@@ -72,14 +72,14 @@ if [ "$GSW" == "cosmos" ]; then
       -e QT_X11_NO_MITSHM=1 \
       -e PROCESSOR_ENDIANNESS="LITTLE_ENDIAN" \
       -w /cosmos/tools \
-      localhost:5000/ballaerospace/cosmos tail -f /dev/null
+      localhost:5000/ballaerospace/cosmos:4.5.0 tail -f /dev/null
 
   sleep 5
   $DCALL exec cosmos-openc3-operator-1 bash -c "apt update && apt install -y xvfb"
   $DCALL exec -d cosmos-openc3-operator-1 bash -c "xvfb-run ruby CmdTlmServer /cosmos/config/tools/cmd_tlm_server/cmd_tlm_server.txt"
 
 elif [ "$GSW" == "cosmos-gui" ]; then
-    $DFLAGS -v $BASE_DIR:$BASE_DIR -dit -v /tmp/nos3:/tmp/nos3 -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY=$DISPLAY -e QT_X11_NO_MITSHM=1 -e PROCESSOR_ENDIANNESS="LITTLE_ENDIAN" -w $GSW_DIR --name cosmos-openc3-operator-1 --network=nos3-core localhost:5000/ballaerospace/cosmos
+    $DFLAGS -v $BASE_DIR:$BASE_DIR -dit -v /tmp/nos3:/tmp/nos3 -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY=$DISPLAY -e QT_X11_NO_MITSHM=1 -e PROCESSOR_ENDIANNESS="LITTLE_ENDIAN" -w $GSW_DIR --name cosmos-openc3-operator-1 --network=nos3-core localhost:5000/ballaerospace/cosmos:4.5.0
 
     echo ""
     echo "Please quickly click the COSMOS Ok button to launch"

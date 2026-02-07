@@ -19,4 +19,4 @@ export GSW="cosmos-openc3-operator-1"
 #mkdir /tmp/uplink 2> /dev/null
 
 echo "COSMOS launch..."
-gnome-terminal --tab --title="Cosmos" -- $DFLAGS -v $BASE_DIR:$BASE_DIR -v /tmp/nos3:/tmp/nos3 -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY=$DISPLAY -e QT_X11_NO_MITSHM=1 -e PROCESSOR_ENDIANNESS="LITTLE_ENDIAN" -w $GSW_DIR --name cosmos-openc3-operator-1 --network=nos3-core localhost:5000/ballaerospace/cosmos
+gnome-terminal --tab --title="Cosmos" -- $DFLAGS -v $BASE_DIR:$BASE_DIR -v /tmp/nos3:/tmp/nos3 -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY=$DISPLAY -e QT_X11_NO_MITSHM=1 -e PROCESSOR_ENDIANNESS="LITTLE_ENDIAN" -w $GSW_DIR --name cosmos-openc3-operator-1 --network=nos3-core localhost:5000/ballaerospace/cosmos:4.5.0

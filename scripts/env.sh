@@ -56,7 +56,7 @@ fi
     DNETWORK="docker network"
 #fi
 
-DBOX="localhost:5000/ivvitc/nos3-64:latest"
+DBOX="localhost:5000/ivvitc/nos3-64:20251107"
 
 # Radio Config
 RADIO_TX_FSW_PORT=5010

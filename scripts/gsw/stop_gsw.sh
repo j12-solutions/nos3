@@ -13,4 +13,4 @@ cd $OPENC3_DIR
 $OPENC3_PATH stop
 
 # COSMOS
-$DCALL ps --filter ancestor="localhost:5000/ballaerospace/cosmos" -aq | xargs $DCALL stop > /dev/null 2>&1 &
+$DCALL ps --filter ancestor="localhost:5000/ballaerospace/cosmos:4.5.0" -aq | xargs $DCALL stop > /dev/null 2>&1 &
